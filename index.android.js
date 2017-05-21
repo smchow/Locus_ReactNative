@@ -80,14 +80,26 @@ export default class Locus_ReactNative extends Component {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
+        <View style={{flex: 0.25, flexDirection: 'row'}}>
+         <View style={styles.header}> 
+           <Image
+              style={{
+                width: 100,
+                height: 100,
+                resizeMode: 'contain',
+                //borderColor: 'black', 
+                //borderStyle: 'solid',
+                borderWidth: 1,}}
+              source={{uri: 'https://locus-image-store.s3.amazonaws.com/locus.png'}}
+            />
+          <Text style={styles.h2}> SHARING SCIENCE GLOBALLY</Text>
+         </View>
+        </View>
+       
           {showProjects}
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <View style={{flexDirection: 'row', backgroundColor: '#78bcaf', height: 50, alignItems:'center',}}>
+   <Text style={{marginLeft:120}}> constant coders 2017</Text>
+   </View>
       </View>
     );
   }
@@ -97,19 +109,56 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    paddingTop: 10,
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  h2: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    justifyContent: 'space-between',
+    marginTop:35,
+    marginRight:0,
+    marginLeft: 0,
+    color: '#2c3e50',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+  header:{
+    //alignSelf: 'strech',
+    flexDirection: 'row',
+    backgroundColor: '#78bcaf',
+    //textAlign: 'center',
+    flex:1,
+    //justifyContent: 'space-around',
+    
+    //padding: 10,
+  },submit: {
+      justifyContent: 'center',
+      width : 150,
+      padding: 10,
+      marginLeft: 20,
+      backgroundColor: '#78bcaf',
+      marginBottom:10,
+      borderWidth: 1,
+      borderColor: 'darkblue',
+      borderStyle: 'solid',
+      borderTopLeftRadius: 10,
+      borderTopRightRadius : 10 ,
+      borderBottomLeftRadius: 10,
+      borderBottomRightRadius : 10 
+   },
+  listItem: {
+      fontSize: 12,
+      fontWeight: 'bold',
+      flex: 1,
+      flexDirection: "row",
+      borderColor: 'black', 
+      borderStyle: 'solid',
+      borderWidth: 1,
+   },
+   listHeaderItem: {
+      fontSize: 14,
+      fontWeight: 'bold',
+      marginLeft: 10,
+      //: 'center',
 
+   },
+});
 AppRegistry.registerComponent('Locus_ReactNative', () => Locus_ReactNative);
