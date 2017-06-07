@@ -98,7 +98,7 @@ export default class Locus_ReactNative extends Component {
        
           {showProjects}
         <View style={{flexDirection: 'row', backgroundColor: '#78bcaf', height: 50, alignItems:'center',}}>
-   <Text style={{marginLeft:120}}> @constant coders 2017</Text>
+   <Text style={{marginLeft:100}}> @constant coders 2017</Text>
    </View>
       </View>
     );
