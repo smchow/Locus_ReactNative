@@ -11,6 +11,7 @@ import {
   Text,
   View , ListView , Image,  TouchableHighlight
 } from 'react-native';
+import Login from './components/Login.js';
 
 export default class Locus_ReactNative extends Component {
    constructor() {
@@ -20,8 +21,10 @@ export default class Locus_ReactNative extends Component {
       projects: ds.cloneWithRows([]),
       notes: ds.cloneWithRows([]),
       studentId: "3",
-      showProjects: true,
+      showProjects: false,
       loggedin: false,
+
+
 
     };
   }
@@ -55,6 +58,19 @@ export default class Locus_ReactNative extends Component {
   render() {
      let showProjects = null;
     let showLogin = null;
+
+
+     if (!this.state.loggedin) {
+      showLogin =  
+        <View>
+        <Login
+               updateEmail = {this.updateEmail}
+               updatePassword = {this.updatePassword}
+               login = {this.login}
+               // getProjects = {this.getProjects}
+            />
+        </View>
+} 
    if (this.state.showProjects){
       showProjects = 
 
@@ -110,7 +126,7 @@ export default class Locus_ReactNative extends Component {
           <Text style={styles.h2}> SHARING SCIENCE GLOBALLY</Text>
          </View>
         </View>
-       
+          {showLogin}       
           {showProjects}
         <View style={{flexDirection: 'row', backgroundColor: '#78bcaf', height: 50, alignItems:'center',}}>
    <Text style={{marginLeft:120}}> constant coders 2017</Text>
