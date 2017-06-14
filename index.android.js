@@ -4,7 +4,55 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+ import React, { Component } from 'react'
+import {
+  AppRegistry,
+   View,
+   LayoutAnimation
+} from 'react-native'
+import MyPresentationalComponent from './MyPresentationalComponent'
+
+export default class Locus_ReactNative extends Component {
+   constructor() {
+      super()
+      this.state = {
+         myStyle: {
+            height: 20,
+            backgroundColor: 'red'
+         }
+      }
+   }
+   expandElement = () => {
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
+      this.setState({
+         myStyle: {
+            height: 400,
+            backgroundColor: 'red'
+         }
+      })
+   }
+   collapseElement = () => {
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.linear);
+      this.setState({
+         myStyle: {
+            height: 100,
+            backgroundColor: 'red'
+         }
+      })
+   }
+   render() {
+      return (
+         <View>
+            <MyPresentationalComponent
+               myStyle = {this.state.myStyle}
+               expandElement = {this.expandElement}
+               collapseElement = {this.collapseElement}
+            />
+         </View>
+      )
+   }
+}
+/*import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
@@ -160,5 +208,5 @@ const styles = StyleSheet.create({
       //: 'center',
 
    },
-});
+});*/
 AppRegistry.registerComponent('Locus_ReactNative', () => Locus_ReactNative);
