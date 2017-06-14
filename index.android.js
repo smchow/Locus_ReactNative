@@ -9,9 +9,10 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View , ListView , Image,  TouchableHighlight
+  View , ListView , Image,  TouchableHighlight, LayoutAnimation
 } from 'react-native';
 import Login from './components/Login.js';
+import MyPresentationalComponent from './MyPresentationalComponent'
 
 export default class Locus_ReactNative extends Component {
    constructor() {
@@ -23,9 +24,10 @@ export default class Locus_ReactNative extends Component {
       studentId: "3",
       showProjects: false,
       loggedin: false,
-
-
-
+      myStyle: {
+            height: 20,
+            backgroundColor: 'red'
+      }
     };
   }
   componentDidMount(){
@@ -54,6 +56,24 @@ export default class Locus_ReactNative extends Component {
           loggedin : true,
           showProjects : true
       });
+}
+expandElement = () => {
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
+      this.setState({
+         myStyle: {
+            height: 40,
+            backgroundColor: 'red'
+         }
+      })
+   }
+   collapseElement = () => {
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.linear);
+      this.setState({
+         myStyle: {
+            height: 10,
+            backgroundColor: 'red'
+         }
+      })
 }
   render() {
      let showProjects = null;
@@ -128,6 +148,11 @@ export default class Locus_ReactNative extends Component {
         </View>
           {showLogin}       
           {showProjects}
+            <MyPresentationalComponent
+               myStyle = {this.state.myStyle}
+               expandElement = {this.expandElement}
+               collapseElement = {this.collapseElement}
+/>
         <View style={{flexDirection: 'row', backgroundColor: '#78bcaf', height: 50, alignItems:'center',}}>
    <Text style={{marginLeft:120}}> constant coders 2017</Text>
    </View>
