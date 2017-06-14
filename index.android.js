@@ -37,6 +37,21 @@ export default class Locus_ReactNative extends Component {
       })
     })
   }
+
+  updateEmail = (text) => {
+      this.setState({email: text})
+   }
+   updatePassword = (text) => {
+      this.setState({password: text})
+   }
+   login = () => {
+      //alert('email: ' + this.state.email + ' password: ' + this.state.password)
+      //this.state.loggedin = true;
+      this.setState({
+          loggedin : true,
+          showProjects : true
+      });
+}
   render() {
      let showProjects = null;
     let showLogin = null;
