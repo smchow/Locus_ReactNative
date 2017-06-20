@@ -33,7 +33,7 @@ export default Login = (props) => {
          <TouchableHighlight
             style = {styles.submit}
             onPress = { () => props.login(props.email, props.password)}>
-            <Text style={{marginLeft:40}}>
+            <Text style={{marginLeft:30}}>
                Submit
             </Text>
          </TouchableHighlight>

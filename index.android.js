@@ -24,6 +24,7 @@ export default class Locus_ReactNative extends Component {
       studentId: "3",
       showProjects: false,
       loggedin: false,
+      showFieldNotes:false,
       myStyle: {
             height: 20,
             backgroundColor: 'red'
@@ -75,10 +76,36 @@ expandElement = () => {
          }
       })
 }
+showFieldNotes = () => {
+      this.setState({
+          loggedin : false,
+          showProjects : false,
+          showFieldNotes : true
+      });
+}
+
+/**
+  <MyPresentationalComponent
+               myStyle = {this.state.myStyle}
+               expandElement = {this.expandElement}
+               collapseElement = {this.collapseElement}
+/>
+**/
   render() {
      let showProjects = null;
     let showLogin = null;
+    let showFieldNotes = null;
 
+
+     if (this.state.showFieldNotes){
+      showFieldNotes = 
+      <View>
+       <Text> 
+       Field Notes Here
+       </Text>
+       </View>
+
+     }
 
      if (!this.state.loggedin) {
       showLogin =  
@@ -113,10 +140,17 @@ expandElement = () => {
                   <Text style= {styles.listHeaderItem}> Project: {rowData.name} {"\n"}{"\n"}
                   <Text style = {styles.listItem}> Description: {rowData.tagLine}{"\n"}
                         Announcements: {rowData.current_announcements}{"\n"}
+                        <Text > {"\n"}</Text>
+                        <TouchableHighlight onPress = { () => showFieldNotes()} >
+                         <Text   style={{height:20,  marginLeft:10, backgroundColor: '#78bcaf'}}> View more details</Text>
+                         </TouchableHighlight>
+                         <Text > {"\n"}</Text>
                   </Text>
                   
                   </Text>
+
                   <Text > {"\n"}{"\n"}</Text>
+
                   
               
               </View>
@@ -148,11 +182,7 @@ expandElement = () => {
         </View>
           {showLogin}       
           {showProjects}
-            <MyPresentationalComponent
-               myStyle = {this.state.myStyle}
-               expandElement = {this.expandElement}
-               collapseElement = {this.collapseElement}
-/>
+          {showFieldNotes}
         <View style={{flexDirection: 'row', backgroundColor: '#78bcaf', height: 50, alignItems:'center',}}>
    <Text style={{marginLeft:120}}> constant coders 2017</Text>
    </View>
