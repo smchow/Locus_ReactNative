@@ -22,8 +22,9 @@ export default class Locus_ReactNative extends Component {
       projects: ds.cloneWithRows([]),
       notes: ds.cloneWithRows([]),
       studentId: "3",
-      showProjects: false,
-      loggedin: false,
+      projectId:"6",
+      showProjects: true,
+      loggedin: true,
       showFieldNotes:false,
       myStyle: {
             height: 20,
@@ -33,7 +34,7 @@ export default class Locus_ReactNative extends Component {
   }
   componentDidMount(){
     console.log("test")
-    let url = "https://react-locus.herokuapp.com/view/" + this.state.studentId ;
+    let url = "https://react-locus.herokuapp.com/viewnotes/" + this.state.projectId ;
     fetch(url)
     .then(res => res.json())
     .then(projects => {
@@ -138,14 +139,13 @@ showFieldNotes = () => {
               borderStyle: 'solid',
               borderWidth: 1,
               }}>
-                  <Image style={{width: 100, height: 100, justifyContent:'flex-start'}}
-                   source={{uri: rowData.image_url}}
-                  />
+                 
             
          
-                  <Text style= {styles.listHeaderItem}> Project: {rowData.name} {"\n"}{"\n"}
-                  <Text style = {styles.listItem}> Description: {rowData.tagLine}{"\n"}
-                        Announcements: {rowData.current_announcements}{"\n"}
+                  <Text style= {styles.listHeaderItem}>
+                  <Text style = {styles.listItem}> User: {rowData.Student.username}{"\n"}
+                        Note Title: {rowData.title} {"\n"}
+                        {rowData.description}{"\n"}
                   </Text>
                   
                   </Text>
@@ -181,7 +181,9 @@ showFieldNotes = () => {
           <Text style={styles.h2}> SHARING SCIENCE GLOBALLY</Text>
          </View>
         </View>
-          {showLogin}       
+          <Text style={{marginLeft:120, fontSize: 14, fontWeight: 'bold',}}> Project: Summer Solstice</Text>   
+          {showLogin}    
+
           {showProjects}
           {showFieldNotes}
         <View style={{flexDirection: 'row', backgroundColor: '#78bcaf', height: 50, alignItems:'center',}}>
