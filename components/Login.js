@@ -17,7 +17,7 @@ export default Login = (props) => {
          <TextInput
             style = {styles.input}
             placeholder = 'Email'  
-            value  = 'juliah@google.com' 
+            value  = 'joe@joe.joe' 
             autoCapitalize = 'none'
             onChangeText = {props.updateEmail}
          />
@@ -25,15 +25,15 @@ export default Login = (props) => {
          <TextInput
             style = {styles.input}
             secureTextEntry={true}
-            value  = 'guest@locus.com' 
-            placeholder = 'Password'
+            value  = 'joe' 
+            placeholder = ''
             autoCapitalize = 'none'
             onChangeText = {props.updatePassword}
          />
          <TouchableHighlight
             style = {styles.submit}
             onPress = { () => props.login(props.email, props.password)}>
-            <Text style={{marginLeft:40}}>
+            <Text style={{marginLeft:30}}>
                Submit
             </Text>
          </TouchableHighlight>

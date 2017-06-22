@@ -9,9 +9,10 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View , ListView , Image,  TouchableHighlight
+  View , ListView , Image,  TouchableHighlight, LayoutAnimation
 } from 'react-native';
 import Login from './components/Login.js';
+import MyPresentationalComponent from './MyPresentationalComponent'
 
 export default class Locus_ReactNative extends Component {
    constructor() {
@@ -23,9 +24,11 @@ export default class Locus_ReactNative extends Component {
       studentId: "3",
       showProjects: false,
       loggedin: false,
-
-
-
+      showFieldNotes:false,
+      myStyle: {
+            height: 20,
+            backgroundColor: 'red'
+      }
     };
   }
   componentDidMount(){
@@ -55,10 +58,60 @@ export default class Locus_ReactNative extends Component {
           showProjects : true
       });
 }
+expandElement = () => {
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
+      this.setState({
+         myStyle: {
+            height: 40,
+            backgroundColor: 'red'
+         }
+      })
+   }
+   collapseElement = () => {
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.linear);
+      this.setState({
+         myStyle: {
+            height: 10,
+            backgroundColor: 'red'
+         }
+      })
+}
+showFieldNotes = () => {
+      this.setState({
+          loggedin : false,
+          showProjects : false,
+          showFieldNotes : true
+      });
+}
+
+/**
+  <MyPresentationalComponent
+               myStyle = {this.state.myStyle}
+               expandElement = {this.expandElement}
+               collapseElement = {this.collapseElement}
+/>
+
+<Text > {"\n"}</Text>
+                        <TouchableHighlight onPress = { () => showFieldNotes()} >
+                         <Text   style={{height:20,  marginLeft:10, backgroundColor: '#78bcaf'}}> View more details</Text>
+                         </TouchableHighlight>
+                         <Text > {"\n"}</Text>
+**/
   render() {
      let showProjects = null;
     let showLogin = null;
+    let showFieldNotes = null;
 
+
+     if (this.state.showFieldNotes){
+      showFieldNotes = 
+      <View>
+       <Text> 
+       Field Notes Here
+       </Text>
+       </View>
+
+     }
 
      if (!this.state.loggedin) {
       showLogin =  
@@ -96,7 +149,9 @@ export default class Locus_ReactNative extends Component {
                   </Text>
                   
                   </Text>
+
                   <Text > {"\n"}{"\n"}</Text>
+
                   
               
               </View>
@@ -128,8 +183,9 @@ export default class Locus_ReactNative extends Component {
         </View>
           {showLogin}       
           {showProjects}
+          {showFieldNotes}
         <View style={{flexDirection: 'row', backgroundColor: '#78bcaf', height: 50, alignItems:'center',}}>
-   <Text style={{marginLeft:120}}> constant coders 2017</Text>
+   <Text style={{marginLeft:120}}> © constantcoders 2017</Text>
    </View>
       </View>
     );
