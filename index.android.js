@@ -90,6 +90,12 @@ showFieldNotes = () => {
                expandElement = {this.expandElement}
                collapseElement = {this.collapseElement}
 />
+
+<Text > {"\n"}</Text>
+                        <TouchableHighlight onPress = { () => showFieldNotes()} >
+                         <Text   style={{height:20,  marginLeft:10, backgroundColor: '#78bcaf'}}> View more details</Text>
+                         </TouchableHighlight>
+                         <Text > {"\n"}</Text>
 **/
   render() {
      let showProjects = null;
@@ -140,11 +146,6 @@ showFieldNotes = () => {
                   <Text style= {styles.listHeaderItem}> Project: {rowData.name} {"\n"}{"\n"}
                   <Text style = {styles.listItem}> Description: {rowData.tagLine}{"\n"}
                         Announcements: {rowData.current_announcements}{"\n"}
-                        <Text > {"\n"}</Text>
-                        <TouchableHighlight onPress = { () => showFieldNotes()} >
-                         <Text   style={{height:20,  marginLeft:10, backgroundColor: '#78bcaf'}}> View more details</Text>
-                         </TouchableHighlight>
-                         <Text > {"\n"}</Text>
                   </Text>
                   
                   </Text>
@@ -184,7 +185,7 @@ showFieldNotes = () => {
           {showProjects}
           {showFieldNotes}
         <View style={{flexDirection: 'row', backgroundColor: '#78bcaf', height: 50, alignItems:'center',}}>
-   <Text style={{marginLeft:120}}> constant coders 2017</Text>
+   <Text style={{marginLeft:120}}> © constantcoders 2017</Text>
    </View>
       </View>
     );
